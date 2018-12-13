@@ -23,6 +23,15 @@ mysqldb:
 rediscache:
     type: 'redis:3.2'
 
+varnish:
+    type: 'varnish:5.2'
+    relationships:
+        app: "app:http"
+    configuration:
+        vcl: !include
+            type: string
+            path: varnish.vcl.twig
+
 # If you wish to have a separate Redis instance for sessions, uncomment
 # this service and the corresponding relationship in .platform.app.yaml.
 #redissession:
